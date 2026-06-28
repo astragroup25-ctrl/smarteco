@@ -1,0 +1,31 @@
+﻿
+> smeco@0.1.0 build
+> next build
+
+▲ Next.js 16.2.9 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+node.exe : 
+En línea: 1 Carácter: 1
++ & "C:\Program Files\nodejs/node.exe" "C:\Users\User\AppData\Roaming\n ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./src/app/apropos/page.tsx:33:202
+Expected '</', got 'ident'
+  [90m31 |[0m ...
+  [90m32 |[0m ...[32mctivité est un droit fondamental, pas un luxe."[0m },
+[31m[1m>[0m [90m33 |[0m ...[32mme dans les zones les plus difficiles d'[0maccès.[32m' },[0m
+  [90m   |[0m                                            [31m[1m^^^^^[0m
+  [90m34 |[0m ...t.[32m' },[0m
+  [90m35 |[0m ...
+  [90m36 |[0m ...
+
+Parsing ecmascript source code failed
+
+
+    at <unknown> (./src/app/apropos/page.tsx:33:202)
