@@ -1,10 +1,11 @@
 'use client'
 
+import { Suspense } from 'react'
 import { useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 
-export default function ValidationPage() {
+function ValidationContenu() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const [message, setMessage] = useState('Analyse de votre paiement en cours...')
@@ -59,58 +60,60 @@ export default function ValidationPage() {
   }, [searchParams, router])
 
   return (
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '24px' }}>
+      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+
+      <div style={{
+        width: '72px', height: '72px', border: '4px solid #1E3A5F',
+        borderTop: '4px solid #00A8FF', borderRadius: '50%',
+        animation: 'spin 1s linear infinite', marginBottom: '32px',
+      }} />
+
+      <h2 style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 600, textAlign: 'center', marginBottom: '20px' }}>
+        {message}
+      </h2>
+
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '32px' }}>
+        {[1, 2, 3, 4].map(i => (
+          <div key={i} style={{
+            width: '8px', height: '8px', borderRadius: '50%',
+            background: i <= etape ? '#00A8FF' : '#1E3A5F',
+            transition: 'background 0.3s ease',
+          }} />
+        ))}
+      </div>
+
+      <div style={{
+        background: '#111827', border: '1px solid #1E3A5F',
+        borderRadius: '12px', padding: '20px', maxWidth: '320px',
+        width: '100%', textAlign: 'center',
+      }}>
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style={{ marginBottom: '12px' }}>
+          <circle cx="16" cy="16" r="15" stroke="#00A8FF" strokeWidth="2" />
+          <path d="M16 10v7M16 21v1" stroke="#00A8FF" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+        <p style={{ color: '#CBD5E1', fontSize: '14px', lineHeight: '1.6', margin: 0 }}>
+          Ne fermez pas cette page.<br />
+          L'analyse prend généralement{' '}
+          <span style={{ color: '#00A8FF', fontWeight: 600 }}>moins de 30 secondes.</span>
+        </p>
+      </div>
+    </div>
+  )
+}
+
+export default function ValidationPage() {
+  return (
     <main style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
-      <div style={{
-        flex: 1, display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center', padding: '24px',
-      }}>
-        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-
-        <div style={{
-          width: '72px', height: '72px',
-          border: '4px solid #1E3A5F',
-          borderTop: '4px solid #00A8FF',
-          borderRadius: '50%',
-          animation: 'spin 1s linear infinite',
-          marginBottom: '32px',
-        }} />
-
-        <h2 style={{
-          color: '#FFFFFF', fontSize: '18px',
-          fontWeight: 600, textAlign: 'center', marginBottom: '20px',
-        }}>
-          {message}
-        </h2>
-
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '32px' }}>
-          {[1, 2, 3, 4].map(i => (
-            <div key={i} style={{
-              width: '8px', height: '8px', borderRadius: '50%',
-              background: i <= etape ? '#00A8FF' : '#1E3A5F',
-              transition: 'background 0.3s ease',
-            }} />
-          ))}
+      <Suspense fallback={
+        <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: '40px', height: '40px', border: '3px solid #1E3A5F', borderTop: '3px solid #00A8FF', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
         </div>
-
-        <div style={{
-          background: '#111827', border: '1px solid #1E3A5F',
-          borderRadius: '12px', padding: '20px', maxWidth: '320px',
-          width: '100%', textAlign: 'center',
-        }}>
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" style={{ marginBottom: '12px' }}>
-            <circle cx="16" cy="16" r="15" stroke="#00A8FF" strokeWidth="2" />
-            <path d="M16 10v7M16 21v1" stroke="#00A8FF" strokeWidth="2.5" strokeLinecap="round" />
-          </svg>
-          <p style={{ color: '#CBD5E1', fontSize: '14px', lineHeight: '1.6', margin: 0 }}>
-            Ne fermez pas cette page.<br />
-            L'analyse prend généralement{' '}
-            <span style={{ color: '#00A8FF', fontWeight: 600 }}>
-              moins de 30 secondes.
-            </span>
-          </p>
-        </div>
-      </div>
+      }>
+        <ValidationContenu />
+      </Suspense>
     </main>
   )
 }
