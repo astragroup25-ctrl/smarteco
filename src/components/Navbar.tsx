@@ -27,12 +27,13 @@ export default function Navbar() {
         top: 0,
         zIndex: 100,
       }}>
-       <Image
-          src="https://i.ibb.co/gL1PFBLd/SMART-ECO.png"
+        <Image
+          src="/images/smart-eco-logo.png"
           alt="SMART.ECO"
-          width={36}
-          height={36}
-          style={{ cursor: 'pointer' }}
+          width={46}
+          height={46}
+          priority
+          style={{ cursor: 'pointer', objectFit: 'contain' }}
           onClick={() => naviguer('/')}
         />
         <button
