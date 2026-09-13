@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local Netlify folder
+.netlify
+
+# Local Supabase state
+supabase/.temp/
+
+# Local development log
+local-server.log
+
+.vercel
+.env*

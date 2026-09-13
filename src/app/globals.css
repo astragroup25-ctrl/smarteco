@@ -1,5 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
+/*
+ * SMART.ECO — portail captif
+ * Thème CLAIR uniquement.
+ *
+ * Aucune bascule sombre : pas de `prefers-color-scheme`, pas de classes `dark:`.
+ * Le mode clair est explicitement déclaré via `color-scheme: light` pour que le
+ * navigateur n'applique pas ses propres contrôles de formulaire en sombre.
+ *
+ * Les couleurs sont centralisées ici sous forme de jetons (variables CSS) :
+ * les pages n'ont plus à répéter des codes hexadécimaux en dur.
+ */
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --bg: #f1f5f9;            /* fond général */
+  --surface: #ffffff;       /* cartes, panneaux, champs */
+  --border: #e2e8f0;        /* bordures et séparateurs */
+
+  /* Texte */
+  --text: #0f172a;          /* texte principal */
+  --text-soft: #334155;     /* texte secondaire */
+  --text-muted: #64748b;    /* texte discret (libellés) */
+
+  /* Accent de marque */
+  --accent: #00a8ff;        /* fonds de boutons, bordures actives, traits SVG */
+  --accent-ink: #0284c7;    /* accent lisible en texte sur fond clair */
+
+  /* États */
+  --success: #00c853;
+  --success-bg: #ecfdf5;
+  --success-border: #a7f3d0;
+  --success-ink: #047857;
+
+  --danger: #ef4444;
+  --danger-bg: #fef2f2;
+  --danger-border: #fecaca;
+  --danger-ink: #b91c1c;
+
+  /* Divers */
+  --whatsapp: #25d366;
+  --backdrop: rgba(0, 0, 0, 0.6); /* voile des modales (reste sombre) */
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -8,8 +52,8 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #0A0E1A;
-  color: #FFFFFF;
+  background: var(--bg);
+  color: var(--text);
   min-height: 100vh;
 }
 
@@ -22,10 +66,10 @@ input, button, a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0E1A;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1E3A5F;
+  background: #cbd5e1;
   border-radius: 4px;
 }

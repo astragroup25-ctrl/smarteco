@@ -57,12 +57,12 @@ function ClientContenu() {
     <div style={{ padding: '24px', maxWidth: '480px', margin: '0 auto', width: '100%' }}>
       <style>{`@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }`}</style>
 
-      <h1 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: 700, margin: '16px 0 24px 0' }}>
+      <h1 style={{ color: '#0F172A', fontSize: '20px', fontWeight: 700, margin: '16px 0 24px 0' }}>
         Espace Client
       </h1>
 
-      <div style={{ background: '#111827', border: '1px solid #1E3A5F', borderRadius: '12px', padding: '20px', marginBottom: '20px' }}>
-        <label style={{ color: '#CBD5E1', fontSize: '13px', display: 'block', marginBottom: '8px' }}>
+      <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '20px' }}>
+        <label style={{ color: '#334155', fontSize: '13px', display: 'block', marginBottom: '8px' }}>
           Votre numéro WhatsApp
         </label>
         <input
@@ -71,8 +71,8 @@ function ClientContenu() {
           placeholder="ex: 50912345678"
           onKeyDown={e => e.key === 'Enter' && chercher()}
           style={{
-            width: '100%', background: '#0A0E1A', border: '1px solid #1E3A5F',
-            borderRadius: '8px', padding: '12px 16px', color: '#FFFFFF',
+            width: '100%', background: '#F1F5F9', border: '1px solid #E2E8F0',
+            borderRadius: '8px', padding: '12px 16px', color: '#0F172A',
             fontSize: '15px', marginBottom: '12px', boxSizing: 'border-box', outline: 'none',
           }}
         />
@@ -87,8 +87,8 @@ function ClientContenu() {
       </div>
 
       {erreur && (
-        <div style={{ background: '#1A0A0A', border: '1px solid #7F1D1D', borderRadius: '12px', padding: '16px', marginBottom: '20px' }}>
-          <p style={{ color: '#FCA5A5', fontSize: '14px', margin: 0, textAlign: 'center' }}>{erreur}</p>
+        <div style={{ background: '#FEF2F2', border: '1px solid #FECACA', borderRadius: '12px', padding: '16px', marginBottom: '20px' }}>
+          <p style={{ color: '#B91C1C', fontSize: '14px', margin: 0, textAlign: 'center' }}>{erreur}</p>
         </div>
       )}
 
@@ -96,33 +96,33 @@ function ClientContenu() {
         <div style={{ animation: 'fadeUp 0.4s ease' }}>
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
             <span style={{
-              background: estExpire ? '#7F1D1D' : '#064E3B',
-              color: estExpire ? '#FCA5A5' : '#6EE7B7',
+              background: estExpire ? '#FECACA' : '#ECFDF5',
+              color: estExpire ? '#B91C1C' : '#047857',
               fontSize: '12px', fontWeight: 600, padding: '4px 16px',
-              borderRadius: '20px', border: `1px solid ${estExpire ? '#991B1B' : '#065F46'}`,
+              borderRadius: '20px', border: `1px solid ${estExpire ? '#FECACA' : '#A7F3D0'}`,
             }}>
               {estExpire ? 'Expiré' : '● Actif'}
             </span>
           </div>
 
-          <div style={{ background: '#111827', border: '1px solid #1E3A5F', borderRadius: '12px', padding: '20px', marginBottom: '16px' }}>
-            <div style={{ borderBottom: '1px solid #1E3A5F', paddingBottom: '16px', marginBottom: '16px' }}>
-              <p style={{ color: '#475569', fontSize: '12px', margin: '0 0 4px 0' }}>Plan actif</p>
+          <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '20px', marginBottom: '16px' }}>
+            <div style={{ borderBottom: '1px solid #E2E8F0', paddingBottom: '16px', marginBottom: '16px' }}>
+              <p style={{ color: '#64748B', fontSize: '12px', margin: '0 0 4px 0' }}>Plan actif</p>
               <p style={{ color: '#00A8FF', fontSize: '18px', fontWeight: 700, margin: 0 }}>
                 {forfait?.nom} — {forfait?.prix} HTG
               </p>
             </div>
 
             <div onClick={copierCode} style={{
-              background: '#0A0E1A', border: `1.5px solid ${copie ? '#00C853' : '#00A8FF'}`,
+              background: '#F1F5F9', border: `1.5px solid ${copie ? '#00C853' : '#00A8FF'}`,
               borderRadius: '10px', padding: '14px', textAlign: 'center',
               cursor: 'pointer', marginBottom: '16px', transition: 'border-color 0.3s ease',
             }}>
-              <p style={{ color: '#475569', fontSize: '11px', margin: '0 0 6px 0' }}>Code d'accès</p>
+              <p style={{ color: '#64748B', fontSize: '11px', margin: '0 0 6px 0' }}>Code d'accès</p>
               <p style={{ color: '#00A8FF', fontSize: '26px', fontWeight: 700, letterSpacing: '5px', fontFamily: 'monospace', margin: '0 0 4px 0' }}>
                 {voucher.code}
               </p>
-              <p style={{ color: copie ? '#00C853' : '#475569', fontSize: '11px', margin: 0 }}>
+              <p style={{ color: copie ? '#00C853' : '#64748B', fontSize: '11px', margin: 0 }}>
                 {copie ? '✓ Copié !' : 'Appuyez pour copier'}
               </p>
             </div>
@@ -136,10 +136,10 @@ function ClientContenu() {
             ].map((item, i) => (
               <div key={i} style={{
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                padding: '10px 0', borderBottom: i < 4 ? '1px solid #0F172A' : 'none',
+                padding: '10px 0', borderBottom: i < 4 ? '1px solid #E2E8F0' : 'none',
               }}>
-                <p style={{ color: '#475569', fontSize: '13px', margin: 0 }}>{item.label}</p>
-                <p style={{ color: '#CBD5E1', fontSize: '13px', fontWeight: 500, margin: 0 }}>{item.value}</p>
+                <p style={{ color: '#64748B', fontSize: '13px', margin: 0 }}>{item.label}</p>
+                <p style={{ color: '#334155', fontSize: '13px', fontWeight: 500, margin: 0 }}>{item.value}</p>
               </div>
             ))}
           </div>
@@ -164,7 +164,7 @@ export default function ClientPage() {
       <Navbar />
       <Suspense fallback={
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ width: '40px', height: '40px', border: '3px solid #1E3A5F', borderTop: '3px solid #00A8FF', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+          <div style={{ width: '40px', height: '40px', border: '3px solid #E2E8F0', borderTop: '3px solid #00A8FF', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
           <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
         </div>
       }>

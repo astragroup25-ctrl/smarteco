@@ -23,16 +23,16 @@ function EchecContenu() {
         </svg>
       </div>
 
-      <h1 style={{ color: '#FFFFFF', fontSize: '24px', fontWeight: 700, marginBottom: '8px', textAlign: 'center' }}>
+      <h1 style={{ color: '#0F172A', fontSize: '24px', fontWeight: 700, marginBottom: '8px', textAlign: 'center' }}>
         Paiement non valide
       </h1>
 
       <div style={{
-        background: '#1A0A0A', border: '1px solid #7F1D1D',
+        background: '#FEF2F2', border: '1px solid #FECACA',
         borderRadius: '12px', padding: '16px', maxWidth: '320px',
         width: '100%', marginBottom: '32px', textAlign: 'center',
       }}>
-        <p style={{ color: '#FCA5A5', fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
+        <p style={{ color: '#B91C1C', fontSize: '14px', margin: 0, lineHeight: '1.6' }}>
           {decodeURIComponent(raison)}
         </p>
       </div>
@@ -66,7 +66,7 @@ export default function EchecPage() {
       <style>{`@keyframes scaleIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }`}</style>
       <Suspense fallback={
         <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div style={{ width: '40px', height: '40px', border: '3px solid #1E3A5F', borderTop: '3px solid #00A8FF', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+          <div style={{ width: '40px', height: '40px', border: '3px solid #E2E8F0', borderTop: '3px solid #00A8FF', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
           <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
         </div>
       }>

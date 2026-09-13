@@ -1,0 +1,35 @@
+# Configuration Supabase du projet SMART.ECO (portail WiFi).
+#
+# But : fixer explicitement la vérification JWT des Edge Functions, plutôt que
+# de dépendre du flag --no-verify-jwt au moment du déploiement.
+
+project_id = "bwwhuzowmpmqiilindvv"
+
+# create-payment est appelée par le portail (Next.js) / l'app (Flutter) : aucun
+# JWT Supabase n'est garanti côté client, donc la vérification JWT doit être
+# désactivée. Le montant n'est jamais repris du client (recalculé depuis la
+# table `forfaits`), ce qui limite l'abus possible à du spam de soumissions.
+# Durcissement possible plus tard : exiger un jeton utilisateur ou un secret
+# partagé si le portail n'est plus le seul appelant légitime.
+[functions.create-payment]
+verify_jwt = false
+
+# kobara-webhook est appelée par Kobara (tiers) : aucun JWT Supabase ne peut être
+# présent. La sécurité repose ENTIÈREMENT sur la vérification de la signature
+# HMAC (header `Kobara-Signature`) effectuée dans la fonction — vérification
+# jamais désactivée, même pour déboguer.
+[functions.kobara-webhook]
+verify_jwt = false
+
+# redeem-voucher est appelée depuis le portail (navigateur) quand le client
+# saisit son code dans les casiers : pas de JWT Supabase côté visiteur.
+# La fonction ne fait que valider un code existant et autoriser le MAC transmis,
+# ce qui n'expose aucune donnée sensible au client.
+[functions.redeem-voucher]
+verify_jwt = false
+
+# NOTE — monitor-usage et purge-screenshots ne sont volontairement PAS listées ici.
+# Elles conservent la valeur par défaut (verify_jwt = true) : elles sont
+# déclenchées par pg_cron via pg_net, qui envoie la clé service_role dans
+# l'en-tête Authorization, ce qui satisfait la vérification. Les passer à
+# `false` les exposerait publiquement à n'importe quel appelant anonyme.
